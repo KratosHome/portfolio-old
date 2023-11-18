@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
-    font-style: italic;
-    font-weight: 400;
+    src: url('/public/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
 }
 
 
