@@ -1,0 +1,19 @@
+.container-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    padding: 10px 20px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      padding: 0 5px;
+    }
+  }
+}

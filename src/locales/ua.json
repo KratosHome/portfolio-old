@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "home": "головна",
+    "about": "про мене",
+    "projects": "проекти",
+    "services": "послуги",
+    "contact": "контакт",
+    "menu": "меню"
+  },
+  "page": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "about": {
+      "title": "",
+      "description": ""
+    }
+  }
+}

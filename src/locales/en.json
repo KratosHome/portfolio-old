@@ -1,0 +1,20 @@
+{
+  "navigation": {
+    "home": "home",
+    "about": "about",
+    "projects": "projects",
+    "services": "services",
+    "contact": "contact",
+    "menu": "menu"
+  },
+  "page": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "about": {
+      "title": "",
+      "description": ""
+    }
+  }
+}

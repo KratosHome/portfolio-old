@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: 400;
+}
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: linear-gradient(180deg,
+    rgb(195, 196, 199) 0%,
+    rgb(196, 195, 203) 10%,
+    rgb(199, 192, 210) 20%,
+    rgb(203, 191, 222) 30%,
+    rgb(207, 197, 241) 40%,
+    rgb(206, 212, 246) 50%,
+    rgb(209, 233, 250) 60%,
+    rgb(207, 209, 245) 70%,
+    rgb(205, 215, 228) 80%,
+    rgb(204, 197, 187) 90%,
+    rgb(196, 195, 201) 100%);
+    --text-color: #000000;
+    --violet-light: #AC69FF;
+    --brand-violet-primary: #6D24C9;
+}
+
+[data-theme="dark"] {
+    --background-color: linear-gradient(180deg,
+    rgb(15, 16, 19) 0%,
+    rgb(16, 15, 23) 10%,
+    rgb(19, 12, 30) 20%,
+    rgb(23, 11, 42) 30%,
+    rgb(27, 17, 61) 40%,
+    rgb(26, 32, 86) 50%,
+    rgb(29, 53, 110) 60%,
+    rgb(27, 29, 105) 70%,
+    rgb(25, 35, 78) 80%,
+    rgb(24, 17, 37) 90%,
+    rgb(16, 15, 21) 100%);
+    --text-color: #F7F7F7;
+    --violet-light: #AC69FF;
+    --brand-violet-primary: #6D24C9;
+}
+
+
+body {
+    transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+a {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: capitalize;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.8px;
+}
+
+ul {
+    list-style: none;
+}
+
+button{
+    font-family: 'JetBrains Mono', monospace;
+    color: #F7F7F7;;
+    text-transform: uppercase;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+}
