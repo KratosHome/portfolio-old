@@ -1,39 +1,32 @@
 "use client"
 import React from 'react';
-import {i18n} from "../../../i18n.config";
-import {usePathname} from "next/navigation";
-import Link from "next/link";
-
+import Image from "next/image";
+import {useRouter} from 'next/navigation';
+import {usePathname} from 'next/navigation';
+import "./LanguageChange.scss"
+import ButtonAnimation from "@/components/Animation/ButtonAnimation/ButtonAnimation";
 
 export default function LanguageChange() {
+    const router = useRouter();
+    const pathName = usePathname();
 
-    const pathName = usePathname()
     const redirectedPathName = (locale: string) => {
-        if (!pathName) return '/'
-        const segments = pathName.split('/')
-        segments[1] = locale
-        return segments.join('/')
+        const newPath = pathName.replace(/^\/[a-z]{2}/, `/${locale}`);
+        router.push(newPath);
     }
 
     return (
-        <section>
-            {
-                pathName === "/ua" ? <>en</> : <>ua</>
-            }
-            <ul>
-                {i18n.locales.map(locale => {
-                    return (
-                        <li key={locale}>
-                            <Link
-                                href={redirectedPathName(locale)}
-                            >
-                                {locale}
-                            </Link>
-                        </li>
-                    )
-                })}
-            </ul>
-        </section>
+        <ButtonAnimation>
+            <section
+                className={"container-language-change"}
+                onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
+            >
+                <Image src={pathName === "/ua" ? "/icons/ua.gif" : "/icons/usa.gif"}
+                       width={70}
+                       height={40}
+                       alt={pathName === "/ua" ? "UA Flag" : "US Flag"}
+                />
+            </section>
+        </ButtonAnimation>
     )
 }
-

@@ -1,7 +1,24 @@
 import type {Metadata} from 'next'
 import './globals.css'
 import NavBar from "@/components/NavBar/NavBar";
+import localFont from 'next/font/local'
 import {Locale} from "../../../i18n.config";
+import ReduxProvider from "@/app/[lang]/provider";
+
+const JetBrainsMono = localFont({
+    src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
+    variable: '--font-jetbrains-mono',
+});
+
+const consolas = localFont({
+    src: '../fonts/consolas/consolas.ttf',
+    variable: '--font-consolas',
+});
+
+const JetBrainsMonoBold = localFont({
+    src: '../fonts/webfonts/JetBrainsMono-Bold.woff2',
+    variable: '--font-jetbrains-mono-bold',
+});
 
 
 export const metadata: Metadata = {
@@ -18,12 +35,14 @@ export default function RootLayout({
 }) {
     return (
         <html lang={params.lang}>
-        <body>
-        <NavBar lang={params.lang}/>
-        <main>
-            {children}
-        </main>
-        </body>
+        <ReduxProvider>
+            <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
+            <NavBar lang={params.lang}/>
+            <main>
+                {children}
+            </main>
+            </body>
+        </ReduxProvider>
         </html>
     )
 }
