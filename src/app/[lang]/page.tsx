@@ -1,17 +1,18 @@
 import {Locale} from "../../../i18n.config";
 import {getDictionary} from "../../../lib/dictionary";
+import HeroSection from "@/components/HeroSection/HeroSection";
 
 export default async function Home({
-                                       params: { lang }
+                                       params: {lang}
                                    }: {
     params: { lang: Locale }
 }) {
-    const { page } = await getDictionary(lang)
+    const {navigation} = await getDictionary(lang)
 
     return (
         <div>
             <section id="section1">
-                <h2>Секція 1</h2>
+                <HeroSection navigation={navigation}/>
             </section>
             <section id="section2">
                 <h2>Секція 2</h2>

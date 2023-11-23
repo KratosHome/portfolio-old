@@ -14,7 +14,7 @@ const Computers = ({ isMobile }: any) => {
 
 
     return (
-        <mesh>  console.log("storedTheme", storedTheme)
+        <mesh>
             <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"} />
             <spotLight
                 position={[-20, 50, 10]}
@@ -28,7 +28,7 @@ const Computers = ({ isMobile }: any) => {
             <primitive
                 object={computer.scene}
                 scale={isMobile ? 0.7 : 0.75}
-                position={isMobile ? [0, -3, -2.2] : [0, -1.1, -2.2]}
+                position={isMobile ? [0, 1.5, -2.2] : [3, 0.5, -3.2]}
                 rotation={[-0.01, -0.2, -0.1]}
             />
         </mesh>
