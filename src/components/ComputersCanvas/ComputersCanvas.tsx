@@ -12,7 +12,7 @@ const Computers = ({ isMobile }: any) => {
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-
+console.log("isMobile", isMobile)
     return (
         <mesh>
             <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"} />
@@ -28,7 +28,7 @@ const Computers = ({ isMobile }: any) => {
             <primitive
                 object={computer.scene}
                 scale={isMobile ? 0.7 : 0.75}
-                position={isMobile ? [0, 1.5, -2.2] : [3, 0.5, -3.2]}
+                position={isMobile ? [0, 5, -1.5] : [5, 0, -2.5]}
                 rotation={[-0.01, -0.2, -0.1]}
             />
         </mesh>
@@ -40,24 +40,27 @@ const ComputersCanvas = () => {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia("(max-width: 500px)");
+        const mediaQuery = window.matchMedia("(max-width: 800px)");
         setIsMobile(mediaQuery.matches);
-        const handleMediaQueryChange = (event: any) => {
+
+        const handleMediaQueryChange = (event) => {
             setIsMobile(event.matches);
         };
+
         mediaQuery.addEventListener("change", handleMediaQueryChange);
+
         return () => {
             mediaQuery.removeEventListener("change", handleMediaQueryChange);
         };
     }, []);
 
-
     return (
         <Canvas
+            key={isMobile ? "mobile" : "desktop"}
             frameloop='demand'
             shadows
             dpr={[1, 2]}
-            camera={{position: [20, 1, 2], fov: 28}}
+            camera={{position: isMobile ? [38, 10, 10] : [22, 0, 2], fov: 28}}
             gl={{preserveDrawingBuffer: true}}
         >
             <Suspense fallback={<Loader/>}>

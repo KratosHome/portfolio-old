@@ -1,8 +1,16 @@
 .container-3d {
-  position: relative;
   height: calc(100vh - 80px);
   margin-top: calc(var(--index) * 4);
-  .computer{
+
+  .computer {
+    position: absolute;
     height: 100%;
+    width: 100vw;
+    top: calc(var(--index) * 15);
+    left: 0;
+    right: 0;
+    @media(max-width: 768px) {
+      top: calc(var(--index) * 25);
+    }
   }
 }

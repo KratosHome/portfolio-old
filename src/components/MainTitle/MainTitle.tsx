@@ -15,7 +15,7 @@ const MainTitle = ({navigation}: any) => {
     }, []);
 
     useEffect(() => {
-        const totalTime = ('developer'.length * 100) + 1000; // adjust based on your typeSpeed and delaySpeed
+        const totalTime = ('developer'.length * 100) + 1500; // adjust based on your typeSpeed and delaySpeed
         const timer = setTimeout(() => setShowDevText(true), totalTime);
         return () => clearTimeout(timer);
     }, []);
@@ -39,9 +39,9 @@ const MainTitle = ({navigation}: any) => {
                             loop={1}
                             cursor={!showDevText}
                             cursorStyle='|'
-                            typeSpeed={100}
-                            deleteSpeed={100}
-                            delaySpeed={1000}
+                            typeSpeed={200}
+                            deleteSpeed={300}
+                            delaySpeed={4500}
                         />
                     )}
                 </div>
@@ -51,9 +51,9 @@ const MainTitle = ({navigation}: any) => {
                         loop={1}
                         cursor
                         cursorStyle='|'
-                        typeSpeed={100}
+                        typeSpeed={80}
                         deleteSpeed={100}
-                        delaySpeed={1000}
+                        delaySpeed={1500}
                     />
                 )}
             </h1>

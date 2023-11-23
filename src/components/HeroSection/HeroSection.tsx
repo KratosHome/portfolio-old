@@ -24,7 +24,7 @@ const HeroSection = ({navigation}: any) => {
         if (isFloating) {
             controls.start(floatAnimation);
         } else {
-            controls.stop();  // Зупинка анімації
+            controls.stop();
         }
     }, [isFloating, controls]);
 
@@ -35,8 +35,8 @@ const HeroSection = ({navigation}: any) => {
             <MainTitle navigation={navigation}/>
             <motion.div
                 className="computer"
-                initial={floatAnimation}  // Початковий стан анімації
-                animate={controls}  // Контроль анімації через controls
+                initial={floatAnimation}
+                animate={controls}
                 onMouseDown={handleMouseDown}
                 onMouseUp={() => setIsFloating(true)}
             >
