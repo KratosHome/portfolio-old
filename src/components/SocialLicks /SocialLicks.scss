@@ -1,0 +1,8 @@
+.container-social-links{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: calc(var(--index) * 28);
+  left: 10px;
+  z-index: 1;
+}

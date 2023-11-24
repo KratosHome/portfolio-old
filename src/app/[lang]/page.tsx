@@ -1,6 +1,8 @@
 import {Locale} from "../../../i18n.config";
 import {getDictionary} from "../../../lib/dictionary";
 import HeroSection from "@/components/HeroSection/HeroSection";
+import React from "react";
+import AboutMe from "@/components/AboutMe/AboutMe";
 
 export default async function Home({
                                        params: {lang}
@@ -15,7 +17,7 @@ export default async function Home({
                 <HeroSection navigation={navigation}/>
             </section>
             <section id="section2">
-                <h2>Секція 2</h2>
+                <AboutMe/>
             </section>
             <section id="section3">
                 <h2>Секція 3</h2>

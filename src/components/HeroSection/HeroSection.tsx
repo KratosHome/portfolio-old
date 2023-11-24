@@ -4,6 +4,7 @@ import {motion, useAnimation} from 'framer-motion';
 import MainTitle from "@/components/MainTitle/MainTitle";
 import ComputersCanvas from "@/components/ComputersCanvas/ComputersCanvas";
 import "./HeroSection.scss";
+import SocialLicks from "@/components/SocialLicks /SocialLicks";
 
 const HeroSection = ({navigation}: any) => {
     const [isFloating, setIsFloating] = useState(true);
@@ -32,6 +33,7 @@ const HeroSection = ({navigation}: any) => {
 
     return (
         <div className="container-3d">
+            <SocialLicks/>
             <MainTitle navigation={navigation}/>
             <motion.div
                 className="computer"

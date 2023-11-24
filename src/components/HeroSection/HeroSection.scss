@@ -6,11 +6,11 @@
     position: absolute;
     height: 100%;
     width: 100vw;
-    top: calc(var(--index) * 15);
+    top: 40vh;
     left: 0;
     right: 0;
     @media(max-width: 768px) {
-      top: calc(var(--index) * 25);
+      top: 50vh;
     }
   }
 }
