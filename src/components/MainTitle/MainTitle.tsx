@@ -41,7 +41,7 @@ const MainTitle = ({navigation}: any) => {
                             cursorStyle='|'
                             typeSpeed={200}
                             deleteSpeed={300}
-                            delaySpeed={4500}
+                            delaySpeed={1500}
                         />
                     )}
                 </div>

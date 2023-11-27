@@ -3,6 +3,7 @@ import {getDictionary} from "../../../lib/dictionary";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import React from "react";
 import AboutMe from "@/components/AboutMe/AboutMe";
+import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 
 export default async function Home({
                                        params: {lang}
@@ -20,7 +21,7 @@ export default async function Home({
                 <AboutMe/>
             </section>
             <section id="section3">
-                <h2>Секція 3</h2>
+                <SelectedProjects/>
             </section>
         </div>
     )

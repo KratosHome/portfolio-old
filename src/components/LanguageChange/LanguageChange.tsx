@@ -4,7 +4,7 @@ import Image from "next/image";
 import {useRouter} from 'next/navigation';
 import {usePathname} from 'next/navigation';
 import "./LanguageChange.scss"
-import ButtonAnimation from "@/components/Animation/ButtonAnimation/ButtonAnimation";
+import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
 export default function LanguageChange() {
     const router = useRouter();

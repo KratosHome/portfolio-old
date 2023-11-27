@@ -12,7 +12,6 @@ const Computers = ({ isMobile }: any) => {
 
     const {theme} = useSelector((state: RootState) => state.theme);
 
-console.log("isMobile", isMobile)
     return (
         <mesh>
             <hemisphereLight intensity={theme == "light" ? 3.15 : 1.15} groundColor={"black"} />
@@ -22,7 +21,7 @@ console.log("isMobile", isMobile)
                 penumbra={1}
                 intensity={1}
                 castShadow
-                shadow-mapSize={2024}
+                shadow-mapSize={500}
             />
             <pointLight intensity={0.5} />
             <primitive
@@ -43,7 +42,7 @@ const ComputersCanvas = () => {
         const mediaQuery = window.matchMedia("(max-width: 800px)");
         setIsMobile(mediaQuery.matches);
 
-        const handleMediaQueryChange = (event) => {
+        const handleMediaQueryChange = (event: any) => {
             setIsMobile(event.matches);
         };
 
@@ -60,14 +59,14 @@ const ComputersCanvas = () => {
             frameloop='demand'
             shadows
             dpr={[1, 2]}
-            camera={{position: isMobile ? [38, 10, 10] : [22, 0, 2], fov: 28}}
+            camera={{position: isMobile ? [38, 10, 10] : [22, 0, -2], fov: 28}}
             gl={{preserveDrawingBuffer: true}}
         >
             <Suspense fallback={<Loader/>}>
                 <OrbitControls
                     enableZoom={false}
-                    maxPolarAngle={Math.PI / 0.5}
-                    minPolarAngle={Math.PI / 5}
+                    maxPolarAngle={Math.PI / 0.2}
+                    minPolarAngle={Math.PI / 4}
                 />
                 <Computers isMobile={isMobile}/>
             </Suspense>

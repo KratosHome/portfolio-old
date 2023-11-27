@@ -5,4 +5,7 @@
   top: calc(var(--index) * 28);
   left: 10px;
   z-index: 1;
+  svg{
+    position: relative;
+  }
 }
