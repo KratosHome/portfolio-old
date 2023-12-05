@@ -1,10 +1,10 @@
 "use client"
 import React from 'react';
-import Image from "next/image";
+import "./LanguageChange.scss"
 import {useRouter} from 'next/navigation';
 import {usePathname} from 'next/navigation';
-import "./LanguageChange.scss"
 import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
+import Image from "next/image";
 
 export default function LanguageChange() {
     const router = useRouter();
@@ -16,14 +16,14 @@ export default function LanguageChange() {
     }
 
     return (
-        <ButtonAnimation>
-            <section
-                className={"container-language-change"}
-                onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
+        <ButtonAnimation isPulse={false}>
+            <section className={"container-language-change"}
+                     onClick={() => redirectedPathName(pathName === "/ua" ? "en" : "ua")}
             >
-                <Image src={pathName === "/ua" ? "/icons/ua.gif" : "/icons/usa.gif"}
-                       width={70}
-                       height={40}
+                <span>{pathName === "/ua" ? "en" : "ua"}</span>
+                <Image src={"/icons/arrow.svg"}
+                       width={10}
+                       height={10}
                        alt={pathName === "/ua" ? "UA Flag" : "US Flag"}
                 />
             </section>

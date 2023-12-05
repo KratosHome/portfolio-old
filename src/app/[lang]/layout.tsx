@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import localFont from 'next/font/local'
 import {Locale} from "../../../i18n.config";
 import ReduxProvider from "@/app/[lang]/provider";
+import {getDictionary} from "../../../lib/dictionary";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -26,18 +27,20 @@ export const metadata: Metadata = {
     description: 'Development of complex and interesting projects',
 }
 
-export default function RootLayout({
-                                       children,
-                                       params
-                                   }: {
+export default async function RootLayout({
+                                             children,
+                                             params
+                                         }: {
     children: React.ReactNode
     params: { lang: Locale }
 }) {
+    const {navigation} = await getDictionary(params.lang)
+
     return (
         <html lang={params.lang}>
         <ReduxProvider>
             <body className={`${JetBrainsMono.variable} ${consolas.variable} ${JetBrainsMonoBold.variable}`}>
-            <NavBar lang={params.lang}/>
+            <NavBar navigation={navigation}/>
             <main>
                 {children}
             </main>

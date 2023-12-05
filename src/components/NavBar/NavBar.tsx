@@ -1,43 +1,43 @@
+"use client"
 import "./navbar.scss"
-import ThemeChange from "@/components/ThemeChange/ThemeChange";
-import LanguageChange from "@/components/LanguageChange/LanguageChange";
-import Link from 'next/link'
-import {getDictionary} from "../../../lib/dictionary";
-import {Locale} from "../../../i18n.config";
-import Image from "next/image";
+import {useEffect} from 'react';
+import {gsap} from 'gsap';
+import Image from 'next/image';
+import ThemeChange from '@/components/ThemeChange/ThemeChange';
+import LanguageChange from '@/components/LanguageChange/LanguageChange';
+import HoverLink from '@/components/UI/HoverLink/HoverLink';
+import ModalHeirMe from "@/components/UI/MyModal/MyModal";
 
-import Button from "@/components/UI/Button/Button";
-import MobileMenu from "@/components/MobileMenu/MobileMenu";
-
-export default async function NavBar({lang}: { lang: Locale }) {
-    const {navigation} = await getDictionary(lang)
+export default function NavBar({navigation}: any) {
+    useEffect(() => {
+        gsap.fromTo(".logo", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, delay: 0.2, ease: "power3.out"});
+        gsap.fromTo(".menu-item", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: "power3.out"});
+        gsap.fromTo(".nav-bar-toggle", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.5, delay: 0.5, ease: "power3.out"});
+    }, []);
 
     return (
         <header className="container-background-main">
             <div className="inner-container"/>
             <nav className="container-nav">
                 <div>
-                    <MobileMenu/>
-                    <Image src={"/logo.png"} alt={"logo"} width={50} height={50}/>
+                    <div className="logo">
+                        <Image src={"/logo.png"} alt={"logo"} width={50} height={50}/>
+                    </div>
                     <ul>
-                        {Object.entries(navigation).slice(0, -2).map(([key, value]) => (
-                            <li key={key}>
-                                <Link href={`/${lang}#${key}`}>{value}</Link>
+                        {Object.entries(navigation).slice(0, -1).map(([key, value], index) => (
+                            <li key={key} className="menu-item">
+                                <HoverLink rout={`#${key}`}>
+                                    <>{value}</>
+                                </HoverLink>
                             </li>
                         ))}
-                        <li className="menu">
-                            <span>{navigation.menu}</span>
-                        </li>
                     </ul>
-                </div>
-                <div className="nav-bar-toggle">
-                    <LanguageChange/>
-                    <ThemeChange/>
-                    <Button>
-                        Hire me
-                    </Button>
+                    <div className="nav-bar-toggle">
+                        <LanguageChange/>
+                        <ThemeChange/>
+                    </div>
                 </div>
             </nav>
         </header>
     );
-};
+}

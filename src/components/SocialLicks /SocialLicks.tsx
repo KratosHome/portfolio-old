@@ -14,7 +14,7 @@ const SocialLicks = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none"
                      aria-labelledby="githubIconTitle">
                     <title id="githubIconTitle">GitHub</title>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
+                    <path fillRule="evenodd" clipRule="evenodd"
                           d="M17.4167 0.333313C7.98305 0.333313 0.333332 7.984 0.333332 17.4219C0.333332 24.9722 5.22824 31.3777 12.016 33.6373C12.8698 33.7954 13.1833 33.2666 13.1833 32.8152C13.1833 32.4078 13.1674 31.0615 13.1601 29.6336C8.40737 30.6674 7.40451 27.6174 7.40451 27.6174C6.62741 25.6422 5.50772 25.1171 5.50772 25.1171C3.95782 24.0564 5.62456 24.0781 5.62456 24.0781C7.34007 24.1987 8.24337 25.8392 8.24337 25.8392C9.76702 28.4517 12.2398 27.6963 13.2147 27.2598C13.3679 26.1552 13.8107 25.4015 14.2992 24.9747C10.5049 24.5425 6.51594 23.0772 6.51594 16.5294C6.51594 14.6638 7.18331 13.1393 8.2762 11.9426C8.09881 11.5122 7.51411 9.77414 8.44167 7.4203C8.44167 7.4203 9.87621 6.96101 13.1408 9.17198C14.5034 8.79323 15.9649 8.60346 17.4167 8.59702C18.8686 8.60346 20.3311 8.79323 21.6964 9.17198C24.9571 6.96101 26.3897 7.4203 26.3897 7.4203C27.3195 9.77414 26.7345 11.5122 26.5571 11.9426C27.6524 13.1393 28.3152 14.6637 28.3152 16.5294C28.3152 23.0928 24.3188 24.5381 20.5148 24.9611C21.1275 25.4914 21.6735 26.5314 21.6735 28.1256C21.6735 30.412 21.6537 32.2523 21.6537 32.8152C21.6537 33.2699 21.9611 33.8028 22.8272 33.635C29.6113 31.3728 34.5 24.9696 34.5 17.4219C34.5 7.984 26.8514 0.333313 17.4167 0.333313Z"
                           fill="white"/>
                     <path
@@ -22,7 +22,7 @@ const SocialLicks = () => {
                         fill="white"/>
                 </svg>
             </ButtonAnimation>
-            <ButtonAnimation as="a" href="https://www.linkedin.com/in/olegtkach101/" target="_blank"
+            <ButtonAnimation isPulse={false} as="a" href="https://www.linkedin.com/in/olegtkach101/" target="_blank"
                              rel="noopener noreferrer nofollow" aria-label="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"
                      aria-labelledby="linkedinIconTitle">
@@ -32,7 +32,8 @@ const SocialLicks = () => {
                         fill="white"/>
                 </svg>
             </ButtonAnimation>
-            <ButtonAnimation as="a" href="https://t.me/KratosHome" target="_blank" rel="noopener noreferrer nofollow"
+            <ButtonAnimation isPulse={false} as="a" href="https://t.me/KratosHome" target="_blank"
+                             rel="noopener noreferrer nofollow"
                              aria-label="Telegram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"
                      aria-labelledby="telegramIconTitle">

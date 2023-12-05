@@ -1,8 +1,9 @@
 "use client"
 import React, {useState} from 'react';
 import "./SelectedProjects.scss"
-import {motion, AnimatePresence} from "framer-motion";
+import {motion, AnimatePresence, useAnimation} from "framer-motion";
 import Image from 'next/image'
+import {usePathname} from "next/navigation";
 
 const date: any = [
     {
@@ -25,13 +26,13 @@ const date: any = [
         descriptionEn: "The Rastcom app is your path to a quick and reliable connection with professionals in any field. It ensures easy order management, flexible planning, and continuous communication, all in one app that's always with you.",
         technologies: "React Native, TypeScript, Redux Toolkit, git",
         link: '',
-        isMobile: false
+        isMobile: true
     },
     {
         id: 3,
         nameUa: "Sharm Beauty - інтернет магазин косметики та парфюмерії",
         nameEn: "Sharm Beauty - an online store for cosmetics and perfumes.",
-        img: "/selectedBlock/rastcomApp.png",
+        img: "/selectedBlock/sharm.png",
         descriptionUa: "Як ментор та тім лід, я веду студентську команду у процесі розробки та модернізації вебсайту https://sharmbeauty.ua, забезпечуючи інтеграцію найкращих практик у дизайні, SEO та розробці за допомогою NextJS та React.",
         descriptionEn: "As a mentor and team leader, I lead a student team in the development and modernization of the website https://sharmbeauty.ua, ensuring the integration of best practices in design, SEO, and development using NextJS and React.",
         technologies: "react, NextJs, Redux Toolkit, framer motion, GSAP. Git",
@@ -63,49 +64,91 @@ const date: any = [
 ]
 
 const SelectedProjects = () => {
+    const pathName = usePathname();
     const [selectedTab, setSelectedTab] = useState(date[0]);
+    const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
 
+    const selectProject = (project) => {
+        setPreviousIndex(date.findIndex(p => p.id === selectedTab.id)); // Оновіть попередній індекс
+        setSelectedTab(project);
+    };
+
+    const swipeDirection = date.findIndex(p => p.id === selectedTab.id) > previousIndex ? '100%' : '-100%'; // Визначте напрямок свайпу
+    const getBackgroundImage = (isMobile) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
+
+    //     {pathName === "/ua" ? "" : ""}
     return (
         <div className="container-selected-projects">
-            <span>Selected projects</span>
+            <span>{pathName === "/ua" ? "Мої проекти" : "My projects"}</span>
             <div className="wrapper-container">
-                <div>
-                    {"<project>"}
+                <div className="container-map-project">
+                    <span className={"script"}>{"<project>"}</span>
                     {date.map((project: any) => (
-                        <motion.div
-                            key={project.id}
-                            className="wrapper-project-list"
-                            onClick={() => setSelectedTab(project)}
-                        >
-                            <div>
-                                <span>{project.id}</span>
-                                <span>{project.nameUa}</span>
+                        <div className={"wrapper-select-project"}>
+                            <span className="enumeration">0{project.id}</span>
+                            <div
+                                className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}
+                            >
+                                <motion.div
+                                    key={project.id}
+                                    className={"wrapper-project-list"}
+                                    onClick={() => selectProject(project)}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        transition: {
+                                            duration: 0.5,
+                                            damping: 10,
+                                            ease: [0.17, 0.67, 0.83, 0.67],
+                                            type: "spring",
+                                            stiffness: 400,
+                                        }
+                                    }}
+                                    whileTap={{
+                                        scale: 0.99,
+                                        transition: {
+                                            type: "spring",
+                                            stiffness: 400,
+                                            damping: 10
+                                        }
+                                    }}
+                                >
+                                    <div>
+                                        <span>{pathName === "/ua" ? `${project.nameUa}` : `${project.nameEn}`}</span>
+                                    </div>
+                                </motion.div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                    {"</project>"}
+                    <span className={"script"}>{"</project>"}</span>
                 </div>
                 <AnimatePresence>
-                    <motion.div
-                        key={selectedTab ? selectedTab.id : "empty"}
-                        initial={{y: 10, opacity: 0}}
-                        animate={{y: 10, opacity: 1}}
-                        exit={{y: 0, opacity: 0}}
-                        transition={{duration: 0.2}}
-                        className="continer-resilt"
-                    >
-
+                    <motion.div className="continer-resilt">
                         {selectedTab &&
-                            <div >
-                                <div className="image-container">
-                                    <Image
-                                        src={selectedTab.img}
-                                        alt="Picture of the author"
+                            <div>
+                                <div
+                                    className={selectedTab.isMobile ? "image-container-mobile" : "image-container"}
+                                    style={{backgroundImage: `url(${getBackgroundImage(selectedTab.isMobile)})`}}>
+                                    <motion.div
+                                        key={selectedTab.id}
+                                        initial={{x: swipeDirection, opacity: 0}}
+                                        animate={{x: 0, opacity: 1}}
+                                        exit={{x: -swipeDirection, opacity: 0}}
+                                        transition={{
+                                            x: {type: "tween", duration: 0.5},
+                                            opacity: {duration: 0.25, delay: 0.25}
+                                        }}
                                         className="image"
-                                        layout="fill"
-                                        objectFit="contain"
-                                    />
+                                    >
+                                        <Image
+                                            src={selectedTab.img}
+                                            alt="Picture of the author"
+                                            className="image"
+                                            fill={true}
+                                            objectFit="contain"
+                                        />
+                                    </motion.div>
                                 </div>
+                                <span>View the code</span>
                             </div>
                         }
                     </motion.div>

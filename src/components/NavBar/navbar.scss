@@ -16,17 +16,17 @@
   .container-nav {
     padding-top: 20px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
 
     > div {
+      width: 100%;
       display: flex;
+      justify-content: space-between;
     }
 
     ul {
       display: flex;
       align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
 
       li {
@@ -41,15 +41,7 @@
       gap: 10px;
 
       @media screen and (max-width: 768px) {
-        display: none;
-      }
-    }
 
-    .menu {
-      display: block;
-
-      @media screen and (max-width: 768px) {
-        display: none;
       }
     }
   }

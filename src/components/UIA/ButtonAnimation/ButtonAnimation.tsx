@@ -11,12 +11,8 @@ type ButtonType = HTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLAnchorE
 
 const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, ...props}) => {
     const controls = useAnimation();
-    const [isHovered, setIsHovered] = useState(false);
-
-    const handleMouseLeave = () => setIsHovered(false);
 
     const handleMouseEnter = () => {
-        setIsHovered(true)
         controls.start({
             scale: 0.9,
             transition: {duration: 0.2}
@@ -30,7 +26,6 @@ const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, ...prop
 
     const Component = motion(as);
 
-    //      onMouseLeave={handleMouseLeave}
     return (
         <Component
             initial={{scale: 1}}
@@ -46,13 +41,6 @@ const ButtonAnimation: FC<ButtonType> = ({children, as = 'div', isPulse, ...prop
             }}
             {...props}
         >
-            {
-                isPulse &&  <PulseComponent
-                    isHovered={isHovered}
-                    delay={0.05}
-                    duration={0.9}
-                />
-            }
             {children}
         </Component>
     );

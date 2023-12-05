@@ -17,11 +17,23 @@ export default async function Home({
             <section id="section1">
                 <HeroSection navigation={navigation}/>
             </section>
-            <section id="section2">
+            <section id="about">
                 <AboutMe/>
             </section>
-            <section id="section3">
+            <section id="projects">
                 <SelectedProjects/>
+            </section>
+            <section id="services">
+                services
+            </section>
+            <section id="experience">
+                experience
+            </section>
+            <section id="trustedBy">
+                experience
+            </section>
+            <section id="connect">
+                connect
             </section>
         </div>
     )

@@ -23,6 +23,9 @@
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
     --loader-background: 0.5;
+    --background-color-modal: #e0e0e0;
+    --background-color-modal-close: #9898bb;
+    --background-color-input: #c8c8d4;
 }
 
 [data-theme="dark"] {
@@ -43,6 +46,9 @@
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
     --loader-background: 0.1;
+    --background-color-modal: #1e1e2a;
+    --background-color-modal-close: purple;
+    --background-color-input: #10101D;
 }
 
 /*  font-size: calc(var(--index) * 1); */
@@ -57,7 +63,7 @@ body {
 }
 
 a, span {
-    font-family: var(--font-jetbrains-mono);
+    font-family: var(--font-consolas);
     color: var(--text-color);
     text-decoration: none;
     text-transform: capitalize;
@@ -74,7 +80,7 @@ ul {
 }
 
 button {
-    font-family: var(--font-jetbrains-mono);
+    font-family: var(--font-consolas);
     color: #F7F7F7;
     text-transform: uppercase;
     border: none;

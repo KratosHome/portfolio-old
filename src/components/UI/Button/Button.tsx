@@ -5,13 +5,17 @@ import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 
 interface ButtonType {
     children: React.ReactNode;
+    onClick?: any
 }
 
-const Button: FC<ButtonType> = ({children}) => {
-
-
+const Button: FC<ButtonType> = ({children, onClick}: any) => {
     return (
-        <ButtonAnimation as="button" className={"container-button"}>
+        <ButtonAnimation
+            isPulse={false}
+            as="button"
+            className={"container-button"}
+            onClick={onClick}
+        >
             {children}
         </ButtonAnimation>
     );

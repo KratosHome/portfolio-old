@@ -1,11 +1,12 @@
-.container-social-links{
+.container-social-links {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: calc(var(--index) * 28);
+  top: 50%;
   left: 10px;
   z-index: 1;
-  svg{
+
+  svg {
     position: relative;
   }
 }
