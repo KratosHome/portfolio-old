@@ -4,6 +4,7 @@ import "./SelectedProjects.scss"
 import {motion, AnimatePresence, useAnimation} from "framer-motion";
 import Image from 'next/image'
 import {usePathname} from "next/navigation";
+import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
 
 const date: any = [
     {
@@ -25,7 +26,7 @@ const date: any = [
         descriptionUa: "Додаток Rastcom - це ваш шлях до швидкого і надійного з'єднання з професіоналами у будь-якій сфері. Він забезпечує легке управління замовленнями, гнучке планування та безперервне спілкування, все в одному додатку, який завжди з вами.",
         descriptionEn: "The Rastcom app is your path to a quick and reliable connection with professionals in any field. It ensures easy order management, flexible planning, and continuous communication, all in one app that's always with you.",
         technologies: "React Native, TypeScript, Redux Toolkit, git",
-        link: '',
+        link: null,
         isMobile: true
     },
     {
@@ -36,7 +37,7 @@ const date: any = [
         descriptionUa: "Як ментор та тім лід, я веду студентську команду у процесі розробки та модернізації вебсайту https://sharmbeauty.ua, забезпечуючи інтеграцію найкращих практик у дизайні, SEO та розробці за допомогою NextJS та React.",
         descriptionEn: "As a mentor and team leader, I lead a student team in the development and modernization of the website https://sharmbeauty.ua, ensuring the integration of best practices in design, SEO, and development using NextJS and React.",
         technologies: "react, NextJs, Redux Toolkit, framer motion, GSAP. Git",
-        link: '',
+        link: null,
         isMobile: false
     },
     {
@@ -67,6 +68,7 @@ const SelectedProjects = () => {
     const pathName = usePathname();
     const [selectedTab, setSelectedTab] = useState(date[0]);
     const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const selectProject = (project) => {
         setPreviousIndex(date.findIndex(p => p.id === selectedTab.id)); // Оновіть попередній індекс
@@ -75,6 +77,8 @@ const SelectedProjects = () => {
 
     const swipeDirection = date.findIndex(p => p.id === selectedTab.id) > previousIndex ? '100%' : '-100%'; // Визначте напрямок свайпу
     const getBackgroundImage = (isMobile) => isMobile ? '/selectedBlock/iphone.png' : '/selectedBlock/macbook.png';
+
+    const toggleExpand = () => setIsExpanded(!isExpanded)
 
     //     {pathName === "/ua" ? "" : ""}
     return (
@@ -148,7 +152,30 @@ const SelectedProjects = () => {
                                         />
                                     </motion.div>
                                 </div>
-                                <span>View the code</span>
+                                <ShowMoreText
+                                    text={pathName === "/ua" ? `${selectedTab.descriptionUa}` : `${selectedTab.descriptionEn}`}
+                                    maxLength={200}/>
+                                {
+                                    selectedTab.link === null
+                                        ?
+                                        <span
+                                            className="openProject">{pathName === "/ua" ? "В процесі..." : "In progress..."}
+                                        </span>
+                                        :
+                                        <a
+                                            className="openProject"
+                                            href={selectedTab.link}
+                                            target="_blank"
+                                            title={pathName === "/ua" ? `${selectedTab.nameUa}` : `${selectedTab.nameUa}`}
+                                        >
+                                            {pathName === "/ua" ? `Переглянути проект` : `View the project`}
+                                            <Image
+                                                src={"/icons/ForwardArrow.svg"}
+                                                alt={"ForwardArrow"}
+                                                width={20}
+                                                height={20}/>
+                                        </a>
+                                }
                             </div>
                         }
                     </motion.div>
