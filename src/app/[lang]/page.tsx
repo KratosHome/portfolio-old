@@ -4,6 +4,9 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import React from "react";
 import AboutMe from "@/components/AboutMe/AboutMe";
 import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
+import Services from "@/components/Services/Services";
+import Experience from "@/components/Experience/Experience";
+import TrustedBy from "@/components/TrustedBy /TrustedBy";
 
 export default async function Home({
                                        params: {lang}
@@ -24,13 +27,13 @@ export default async function Home({
                 <SelectedProjects/>
             </section>
             <section id="services">
-                services
+                <Services/>
             </section>
             <section id="experience">
-                experience
+                <Experience/>
             </section>
             <section id="trustedBy">
-                experience
+                <TrustedBy/>
             </section>
             <section id="connect">
                 connect
