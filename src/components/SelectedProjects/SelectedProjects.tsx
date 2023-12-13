@@ -89,7 +89,7 @@ const SelectedProjects = () => {
                     <div className="container-map-project">
                         <span className={"script"}>{"<project>"}</span>
                         {date.map((project: any) => (
-                            <div className={"wrapper-select-project"}>
+                            <div key={project.id} className={"wrapper-select-project"}>
                                 <span className="enumeration">0{project.id}</span>
                                 <div
                                     className={project.id === 1 ? "wrapper-project-list-first-elem-border" : "wrapper-project-list-first-border"}

@@ -96,13 +96,13 @@ const ExperienceList = ({item, index}: any) => {
                                 {
                                     pathName === "/ua" ? (
                                         Array.isArray(item.descriptionUa) ? (
-                                            item.descriptionUa.map((item: any) => <div>{item.text}</div>)
+                                            item.descriptionUa.map((item: any) => <div key={item.text}>{item.text}</div>)
                                         ) : (
                                             <div>{item.descriptionUa}</div>
                                         )
                                     ) : (
                                         Array.isArray(item.descriptionEn) ? (
-                                            item.descriptionEn.map((item: any) => <div>{item.text}</div>)
+                                            item.descriptionEn.map((item: any) => <div key={item.text}>{item.text}</div>)
                                         ) : (
                                             <div>{item.descriptionEn}</div>
                                         )
@@ -111,7 +111,7 @@ const ExperienceList = ({item, index}: any) => {
                             </div>
                             <div className="wrapper-technologies">
                                 {item.technologies.map((item: any) =>
-                                    <span>{item}</span>
+                                    <span key={item}>{item}</span>
                                 )}
                             </div>
                         </motion.div>

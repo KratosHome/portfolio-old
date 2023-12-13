@@ -14,6 +14,7 @@ const TrustedBy = ({reviews}: any) => {
         <div className="container-trusted-by">
             <span className="title-block">trusted by</span>
             <Swiper
+                isButtonToggle={false}
                 cards={reviews}
                 numberCards={-1}
                 renderItem={(item: any) => (

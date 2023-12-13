@@ -8,7 +8,10 @@ import ButtonAnimation from "@/components/UIA/ButtonAnimation/ButtonAnimation";
 import {motion, AnimatePresence} from "framer-motion";
 import {createReviewAction} from "@/api/createReview.server";
 
-const FormHLeaveReview = ({setOpen}: { setOpen: (open: boolean) => void }) => {
+
+const FormHLeaveReview = ({setOpen}: {
+    setOpen?: (open: boolean) => void
+}) => {
     const pathName = usePathname();
     const recaptchaRef = useRef<ReCAPTCHA>(null);
     const [isVerified, setIsverified] = useState<boolean>(false);
@@ -25,7 +28,9 @@ const FormHLeaveReview = ({setOpen}: { setOpen: (open: boolean) => void }) => {
     const onSubmit = async (data: any) => {
         setFormSubmitted(true);
         await createReviewAction(data);
-        setTimeout(() => setOpen(false), 1000);
+        if (setOpen) {
+            setTimeout(() => setOpen(false), 1000);
+        }
     };
 
     const thankYouAnimation = {

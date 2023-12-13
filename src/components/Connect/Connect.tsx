@@ -9,12 +9,13 @@ import FadeInAnimation from "@/components/UIA/FadeInAnimation/FadeInAnimation";
 const Connect = () => {
     const pathName = usePathname();
 
-    const videoRef = useRef(null);
+    const videoRef = useRef<any>(null);
 
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.playbackRate = 2;
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

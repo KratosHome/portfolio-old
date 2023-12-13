@@ -6,7 +6,7 @@ import Image from "next/image";
 import {motion} from "framer-motion";
 
 interface swiperTypes {
-    cards: any;
+    cards: any[];
     renderItem: any;
     isButtonToggle: any
     numberCards: number
@@ -18,16 +18,16 @@ const Swiper: FC<swiperTypes> = ({
                                      isButtonToggle,
                                      numberCards
                                  }) => {
-    const componentRef = useRef(null);
-    const ref = useRef(null);
+    const componentRef = useRef<any>(null);
+    const ref = useRef<any>(null);
 
     const [refView, inView] = useInView();
     const [isVisible, setIsVisible] = useState(false);
 
-    const [currentArray, setCurrentArray] = useState(null);
+    const [currentArray, setCurrentArray] = useState<any>(null);
 
     const [constraint, setConstraint] = useState(0);
-    const [cardsToShow, setCardsToShow] = useState(numberCards);
+    const [cardsToShow, setCardsToShow] = useState<any>(numberCards);
     const [slidePosition, setSlidePosition] = useState(0);
 
     const [scrollDirection, setScrollDirection] = useState("down");
@@ -54,13 +54,18 @@ const Swiper: FC<swiperTypes> = ({
         }
 
         setSlidePosition(0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screenWidth]);
 
 
     const containerWidth = ref.current?.offsetWidth;
     useEffect(() => {
         const cardWidth = containerWidth / cardsToShow;
-        setConstraint(cardWidth * currentArray?.length - containerWidth);
+
+        if(Array.isArray(currentArray)) {
+            setConstraint(cardWidth * currentArray.length - containerWidth);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [containerWidth]);
 
 
@@ -76,7 +81,7 @@ const Swiper: FC<swiperTypes> = ({
     }
 
 
-    const onSwipe = (e, {offset}) => {
+    const onSwipe = (e: any, {offset}: any) => {
         let direction = offset.x > 0 ? 'right' : 'left';
         let newPosition = slidePosition + offset.x;
         newPosition = Math.min(newPosition, 0);
@@ -100,10 +105,11 @@ const Swiper: FC<swiperTypes> = ({
         return () => {
             window.removeEventListener("scroll", updateScrollDirection);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const showAnimate = {
-        visible: (i) => ({
+        visible: (i: any) => ({
             opacity: 1,
             translateY: 0,
             transition: {
@@ -127,15 +133,18 @@ const Swiper: FC<swiperTypes> = ({
             setIsVisible(entry.isIntersecting);
         });
 
-        if (componentRef.current) {
-            observer.observe(componentRef.current);
+        const currentRef = componentRef.current;
+
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (componentRef.current) {
-                observer.unobserve(componentRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 

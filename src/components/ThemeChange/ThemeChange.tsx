@@ -18,6 +18,7 @@ const ThemeChange = () => {
         const storedTheme = localStorage.getItem('theme');
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         dispatch(toggleTheme(storedTheme !== null ? storedTheme : systemTheme))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useLayoutEffect(() => {

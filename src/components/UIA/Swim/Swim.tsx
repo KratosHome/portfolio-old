@@ -30,6 +30,7 @@ const Swim: FC<SwimProps> = ({children, isFast, delay, ...props}) => {
         } else {
             controls.stop();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFloating, controls]);
 
     const handleMouseDown = () => setIsFloating(false);

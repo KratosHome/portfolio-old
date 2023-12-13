@@ -69,7 +69,10 @@ const CloseIcon = () => {
         } else {
             scrollYProgressMV.set(0);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMobile]);
+
+
     return (
         <div
             className={"container-close-icon"}
