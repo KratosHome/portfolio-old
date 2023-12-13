@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 import {Locale} from "../../../i18n.config";
 import ReduxProvider from "@/app/[lang]/provider";
 import {getDictionary} from "../../../lib/dictionary";
+import Footer from "@/components/Footer/Footer";
 
 const JetBrainsMono = localFont({
     src: '../fonts/webfonts/JetBrainsMono-Light.woff2',
@@ -45,6 +46,7 @@ export default async function RootLayout({
                 {children}
             </main>
             </body>
+            <Footer/>
         </ReduxProvider>
         </html>
     )

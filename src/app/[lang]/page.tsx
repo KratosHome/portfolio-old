@@ -7,6 +7,8 @@ import SelectedProjects from "@/components/SelectedProjects/SelectedProjects";
 import Services from "@/components/Services/Services";
 import Experience from "@/components/Experience/Experience";
 import TrustedBy from "@/components/TrustedBy /TrustedBy";
+import {fetchReviews} from "@/app/lib/date";
+import Connect from "@/components/Connect/Connect";
 
 export default async function Home({
                                        params: {lang}
@@ -14,6 +16,7 @@ export default async function Home({
     params: { lang: Locale }
 }) {
     const {navigation} = await getDictionary(lang)
+    const reviews = await fetchReviews()
 
     return (
         <div>
@@ -33,10 +36,10 @@ export default async function Home({
                 <Experience/>
             </section>
             <section id="trustedBy">
-                <TrustedBy/>
+                <TrustedBy reviews={reviews}/>
             </section>
             <section id="connect">
-                connect
+                <Connect/>
             </section>
         </div>
     )

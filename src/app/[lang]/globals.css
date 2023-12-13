@@ -20,12 +20,14 @@
     rgb(204, 197, 187) 90%,
     rgb(196, 195, 201) 100%);
     --text-color: #000000;
+    --text-color-hover: #24428a;
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
     --loader-background: 0.5;
     --background-color-modal: #e0e0e0;
     --background-color-modal-close: #9898bb;
     --background-color-input: #c8c8d4;
+    --shadow-color-inset: #595972;
 }
 
 [data-theme="dark"] {
@@ -38,17 +40,19 @@
     rgb(27, 17, 61) 40%,
     rgb(26, 32, 86) 50%,
     rgb(29, 53, 110) 60%,
-    rgb(27, 29, 105) 70%,
-    rgb(25, 35, 78) 80%,
+    rgb(24, 17, 37) 70%,
+    rgb(24, 17, 37) 80%,
     rgb(24, 17, 37) 90%,
     rgb(16, 15, 21) 100%);
     --text-color: #F7F7F7;
+    --text-color-hover: #FFA500;
     --violet-light: #AC69FF;
     --brand-violet-primary: #6D24C9;
     --loader-background: 0.1;
     --background-color-modal: #1e1e2a;
     --background-color-modal-close: purple;
     --background-color-input: #10101D;
+    --shadow-color-inset: #10101D;
 }
 
 /*  font-size: calc(var(--index) * 1); */
@@ -90,3 +94,28 @@ button {
     cursor: pointer;
 }
 
+.download-pdf {
+    margin: 50px 0;
+}
+
+.title-block {
+    font-family: var(--font-consolas);
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 2.24px;
+    text-transform: uppercase;
+}
+
+
+.link-another-platform {
+    text-decoration-line: underline;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--text-color-hover);
+        transform: scale(1.05);
+        text-shadow: 0 0 10px rgba(255, 165, 0, 0.7);
+    }
+}

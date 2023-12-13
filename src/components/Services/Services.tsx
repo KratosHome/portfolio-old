@@ -1,9 +1,9 @@
 'use client'
 import "./Services.scss";
-import {motion, useSpring} from "framer-motion";
-import {useEffect, useRef, useState} from "react";
+import React from "react";
 import Image from "next/image";
-import {useWindowWidth} from "@/hooks/useWindowWidth";
+import {usePathname} from "next/navigation";
+import Swiper from "@/components/UI/Swiper/Swiper";
 
 
 const services = [
@@ -59,99 +59,30 @@ const services = [
 
 
 const Services = () => {
-    const ref = useRef(null);
-    const [currentArray, setCurrentArray] = useState(services);
-
-    const [constraint, setConstraint] = useState(0);
-    const [cardsToShow, setCardsToShow] = useState(3);
-    const [slidePosition, setSlidePosition] = useState(0);
-
-
-    const screenWidth = window.innerWidth;
-    useEffect(() => {
-        if (screenWidth < 600) {
-            setCardsToShow(1);
-        } else if (screenWidth >= 600 && screenWidth < 900) {
-            setCardsToShow(2);
-        } else if (screenWidth >= 900 && screenWidth < 1200) {
-            setCardsToShow(3);
-        } else {
-            setCardsToShow(4);
-        }
-
-        setSlidePosition(0);
-    }, [screenWidth]);
-
-
-    const containerWidth = ref.current?.offsetWidth;
-    useEffect(() => {
-        const cardWidth = containerWidth / cardsToShow;
-        setConstraint(cardWidth * services.length - containerWidth);
-    }, [containerWidth]);
-
-
-    const handleSwipe = (direction: any) => {
-        const containerWidth = ref.current.offsetWidth;
-        const cardWidth = containerWidth / cardsToShow;
-
-        if (direction === 'left') {
-            setSlidePosition(Math.min(slidePosition + cardWidth, 0));
-        } else if (direction === 'right') {
-            setSlidePosition(Math.max(slidePosition - cardWidth, -constraint));
-        }
-    }
-
-
-    const onSwipe = (e, {offset}) => {
-        let direction = offset.x > 0 ? 'right' : 'left';
-        let newPosition = slidePosition + offset.x;
-        newPosition = Math.min(newPosition, 0);
-        newPosition = Math.max(newPosition, -constraint);
-        setSlidePosition(newPosition);
-    };
+    const pathName = usePathname();
 
 
     return (
         <div className='container-services'>
-            <span>title</span>
-            <div>
-                <button className="toggle-swipe-left" onClick={() => handleSwipe('left')}>
-                    <Image
-                        src={"/icons/Chevron.svg"}
-                        alt={"Chevron.svg"}
-                        width={25}
-                        height={25}/>
-                </button>
-                <motion.div className='container-slider'>
-                    <motion.div
-                        ref={ref}
-                        drag='x'
-                        dragConstraints={{right: 0, left: -constraint}}
-                        animate={{x: slidePosition}}
-                        key={constraint}
-                        className='slider'
-                        onDragEnd={onSwipe}
-                        hello-attr={-constraint}
-                    >
-                        {currentArray.map((item) => (
-                            <div key={item.id} className='box' style={{minWidth: `calc(100% / ${cardsToShow})`}}>
-                                <div className="iner-box">
-                                    <Image src={item.icon} alt={item.nameUa} width={50} height={50}/>
-                                    <span>{item.nameUa}</span>
-                                    <div>{item.descriptionUa}</div>
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
-                </motion.div>
-                <button className="toggle-swipe" onClick={() => handleSwipe('right')}>
-                    <Image
-                        src={"/icons/Chevron.svg"}
-                        alt={"Chevron.svg"}
-                        width={25}
-                        height={25}/>
-                </button>
-            </div>
+            <span className="title-block">
+                {pathName === "/ua" ? `Мої послуги` : `My services`}
+            </span>
+            <Swiper
+                cards={services}
+                numberCards={0}
+                isButtonToggle={true}
+                renderItem={(item: any) => (
+                    <div className="iner-box">
+                        <Image src={item.icon} alt={item.nameUa} width={50} height={50}/>
+                        <span>
+                            {pathName === "/ua" ? `${item.nameUa}` : `${item.nameEn}`}
+                        </span>
+                        <div className="inner-box-description">
+                            {pathName === "/ua" ? `${item.descriptionUa}` : `${item.descriptionEn}`}
+                        </div>
+                    </div>
+                )}
+            />
         </div>
     );
 };

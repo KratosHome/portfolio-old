@@ -6,7 +6,6 @@ import Image from 'next/image';
 import ThemeChange from '@/components/ThemeChange/ThemeChange';
 import LanguageChange from '@/components/LanguageChange/LanguageChange';
 import HoverLink from '@/components/UI/HoverLink/HoverLink';
-import ModalHeirMe from "@/components/UI/MyModal/MyModal";
 
 export default function NavBar({navigation}: any) {
     useEffect(() => {
