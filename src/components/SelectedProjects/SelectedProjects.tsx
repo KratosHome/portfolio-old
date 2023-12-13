@@ -1,7 +1,7 @@
 "use client"
 import React, {useState} from 'react';
 import "./SelectedProjects.scss"
-import {motion, AnimatePresence, useAnimation} from "framer-motion";
+import {motion, AnimatePresence} from "framer-motion";
 import Image from 'next/image'
 import {usePathname} from "next/navigation";
 import ShowMoreText from "@/components/UI/ShowMoreText/ShowMoreText";
@@ -69,7 +69,6 @@ const SelectedProjects = () => {
     const pathName = usePathname();
     const [selectedTab, setSelectedTab] = useState(date[0]);
     const [previousIndex, setPreviousIndex] = useState(0); // Зберігайте попередній індекс
-    const [isExpanded, setIsExpanded] = useState(false);
 
     const selectProject = (project: any) => {
         setPreviousIndex(date.findIndex((p: any) => p.id === selectedTab.id)); // Оновіть попередній індекс
@@ -148,10 +147,9 @@ const SelectedProjects = () => {
                                         >
                                             <Image
                                                 src={selectedTab.img}
-                                                alt="Picture of the author"
+                                                alt={selectedTab.nameUa}
                                                 className="image"
                                                 fill={true}
-                                                objectFit="contain"
                                             />
                                         </motion.div>
                                     </div>

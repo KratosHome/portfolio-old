@@ -1,8 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const storedTheme = localStorage.getItem('theme');
+// Ініціалізуємо змінну для збереження теми
+let storedTheme = 'light';
+
+// Перевіряємо, чи виконується код у браузері
+if (typeof window !== 'undefined') {
+    storedTheme = localStorage.getItem('theme') ?? 'light';
+}
+
 const initialState = {
-    theme: storedTheme ?? 'light',
+    theme: storedTheme,
 };
 
 export const themeSlice = createSlice({
@@ -11,7 +18,9 @@ export const themeSlice = createSlice({
     reducers: {
         toggleTheme: (state, action: PayloadAction<string>) => {
             state.theme = action.payload;
-            localStorage.setItem('theme', action.payload);
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('theme', action.payload);
+            }
         },
     },
 });

@@ -118,9 +118,10 @@
         overflow: hidden;
 
         .image {
+          object-fit: contain;
           width: 100%;
           height: 100%;
-          padding: 0% 17% 5% 17%;
+          padding: 0 17% 5% 17%;
           margin: auto;
         }
 
@@ -134,6 +135,7 @@
       .image-container-mobile {
 
         .image {
+          object-fit: contain;
           padding: 9% 27% 8% 27%;
           @media(max-width: 1032px) {
             padding: 7% 25% 7% 25%;
