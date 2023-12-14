@@ -27,7 +27,7 @@ export default function Home() {
                 <Experience/>
             </section>
             <section id="trustedBy">
-                <TrustedBy reviews={reviews}/>
+                <TrustedBy/>
             </section>
             <section id="connect">
                 <Connect/>
