@@ -42,7 +42,7 @@ const Swiper: FC<swiperTypes> = ({
         refView(node);
     };
 
-
+ 
 
     useEffect(() => {
         if (typeof window !== "undefined") {
