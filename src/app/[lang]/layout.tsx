@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import localFont from 'next/font/local'
 import {Locale} from "../../../i18n.config";
 import ReduxProvider from "@/app/[lang]/provider";
-import {getDictionary} from "../../../lib/dictionary";
+import {getDictionary} from "../lib/dictionary";
 import Footer from "@/components/Footer/Footer";
 import { Amplify } from 'aws-amplify';
 import amplifyConfig from '@/amplifyconfiguration.json';
