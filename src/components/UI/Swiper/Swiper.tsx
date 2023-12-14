@@ -42,12 +42,10 @@ const Swiper: FC<swiperTypes> = ({
         refView(node);
     };
 
+    const screenWidth = useWindowWidth()
 
-
-    
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const screenWidth = window.innerWidth;
             if (screenWidth < 600) {
                 setCardsToShow(1);
             } else if (screenWidth >= 600 && screenWidth < 900) {
