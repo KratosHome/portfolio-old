@@ -43,7 +43,7 @@ const Swiper: FC<swiperTypes> = ({
     };
 
 
-  
+
     useEffect(() => {
         if (typeof window !== "undefined") {
             const screenWidth = window.innerWidth;
