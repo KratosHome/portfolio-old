@@ -41,7 +41,7 @@ const Swiper: FC<swiperTypes> = ({
         ref.current = node;
         refView(node);
     };
-
+  
     const screenWidth = useWindowWidth()
 
     useEffect(() => {
