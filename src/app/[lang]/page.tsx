@@ -1,5 +1,3 @@
-import {Locale} from "../../../i18n.config";
-import {getDictionary} from "../lib/dictionary";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import React from "react";
 import AboutMe from "@/components/AboutMe/AboutMe";
@@ -10,18 +8,13 @@ import TrustedBy from "@/components/TrustedBy /TrustedBy";
 import {fetchReviews} from "@/app/lib/date";
 import Connect from "@/components/Connect/Connect";
 
-export default async function Home({
-                                       params: {lang}
-                                   }: {
-    params: { lang: Locale }
-}) {
-    const {navigation} = await getDictionary(lang)
+export default async function Home() {
     const reviews = await fetchReviews()
 
     return (
         <div>
             <section id="section1">
-                <HeroSection navigation={navigation}/>
+                <HeroSection/>
             </section>
             <section id="about">
                 <AboutMe/>
