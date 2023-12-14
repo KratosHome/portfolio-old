@@ -1,3 +1,4 @@
+"use client"
 import React, {FC, useEffect, useRef, useState} from 'react';
 import "./Swiper.scss"
 import {useInView} from "react-intersection-observer";
@@ -41,21 +42,22 @@ const Swiper: FC<swiperTypes> = ({
         refView(node);
     };
 
-    const screenWidth = useWindowWidth();
     useEffect(() => {
-        if (screenWidth < 600) {
-            setCardsToShow(1);
-        } else if (screenWidth >= 600 && screenWidth < 900) {
-            setCardsToShow(2 + numberCards);
-        } else if (screenWidth >= 900 && screenWidth < 1200) {
-            setCardsToShow(3 + numberCards);
-        } else {
-            setCardsToShow(4 + numberCards);
+        if (typeof window !== "undefined") {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 600) {
+                setCardsToShow(1);
+            } else if (screenWidth >= 600 && screenWidth < 900) {
+                setCardsToShow(2 + numberCards);
+            } else if (screenWidth >= 900 && screenWidth < 1200) {
+                setCardsToShow(3 + numberCards);
+            } else {
+                setCardsToShow(4 + numberCards);
+            }
         }
-
         setSlidePosition(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [screenWidth]);
+    }, []);
 
 
     const containerWidth = ref.current?.offsetWidth;

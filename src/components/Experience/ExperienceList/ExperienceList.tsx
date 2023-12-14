@@ -61,7 +61,7 @@ const ExperienceList = ({item, index}: any) => {
                 transition={{duration: 0.5}}
                 className="wrapper-experience-list"
                 onClick={toggleOpen}
-                data-isOpen={isOpen}
+                data-isopen={isOpen}
             >
                 <motion.div layout className="child">
                     <div className="wrapper-title">
